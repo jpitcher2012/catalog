@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+
+	<div>
+		<h2>Home</h2>
+	</div>
+
+	<div>
+		 Dogs are considered man's best friend, but what comes to mind when you
+		 think of a dog? The species is incredibly diverse. Dogs come in all shapes
+		 and sizes, with various colorings, hair types, and personalities. However,
+		 while a Chihuahua may not seem to have much in common with a Newfoundland,
+		 many breeds share some strong similarities. One way to find similar breeds
+		 is to consider their breed group, which categorizes dogs based on what they
+		 were originally bred to do. Here, we will look at some dogs in the 7 groups
+		 recognized by the American Kennel Club.
+	</div>
+
+	<div class="row">
+	{% for group in groups %}
+		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+			<a href = "{{url_for('showGroupBreeds', group_id = group.id)}}">
+				<div class="thumbnail">
+					{% if group.picture %}
+						<img src="{{url_for('static', filename=group.picture)}}" alt="{{group.name}}">
+					{% endif %}
+				</div>
+				<h3 class="center">{{group.name}}</h3>
+			</a>
+		</div>
+	{% endfor %}
+{% endblock %}

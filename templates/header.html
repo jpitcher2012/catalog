@@ -1,0 +1,24 @@
+<div class="header center">
+  <div>
+    <h1><a href="{{url_for('showGroups')}}">All About Dogs</a></h1>
+  </div>
+</div>
+<div class="login">
+  <span class = "left">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </span>
+
+  {% if 'username' not in session %}
+    <a href="{{url_for('showLogin')}}">Log In</a>
+  {% else %}
+    <a href="{{url_for('logout')}}">Log Out</a>
+  {% endif %}
+</div>

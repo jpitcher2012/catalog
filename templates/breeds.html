@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block content %}
+
+	<div>
+		<span class="right">
+			<a href="{{url_for('addBreed', group_id = group.id )}}">Add Breed</a>
+		</span>
+		<h2>
+			<a href="{{url_for('showGroups')}}">Home</a> >
+			{{group.name}} Group
+		</h2>
+	</div>
+
+	<div>{{group.description}}</div>
+
+	<div class="row">
+	{% for breed in breeds %}
+		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+			<a href = "{{url_for('showBreedInfo', breed_id = breed.id, group_id = group.id)}}">
+				<div class="thumbnail">
+					{% if breed.picture %}
+						<img src="{{url_for('static', filename=breed.picture)}}" alt="{{breed.name}}">
+					{% endif %}
+				</div>
+				<h3 class="center">{{breed.name}}</h3>
+				{% if breed.user_id == user_id %}
+					<div class="center">
+						<a href="{{url_for('editBreed', breed_id = breed.id, group_id = group.id)}}">Edit</a> |
+						<a href="{{url_for('deleteBreed', breed_id = breed.id, group_id = group.id)}}">Delete</a>
+					</div>
+				{% endif %}
+			</a>
+		</div>
+	{% endfor %}
+	</ul>
+{% endblock %}

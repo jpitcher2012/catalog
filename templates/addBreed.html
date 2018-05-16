@@ -1,0 +1,61 @@
+{% extends "main.html" %}
+{% block content %}
+
+	<h2>
+		<a href="{{url_for('showGroups')}}">Home</a> >
+		<a href="{{url_for('showGroupBreeds', group_id=group.id)}}">{{group.name}} Group</a> >
+		Add Breed
+	</h2>
+
+	<form action="#" method="post" enctype="multipart/form-data">
+
+		<div class="row form-element">
+			<div class="col-md-2">
+				<label for="name">Name:</label>
+			</div>
+			<div class="col-md-10">
+				<input type ="text" maxlength="50" size="60" name="name">
+			</div>
+		</div>
+
+		<div class="row form-element">
+			<div class="col-md-2">
+				<label for="description">Description:</label>
+			</div>
+			<div class="col-md-10">
+				<textarea maxlength="1000" rows="4" cols="60" name="description"></textarea>
+			</div>
+		</div>
+
+		<div class="row form-element">
+			<div class="col-md-2">
+				<label for="height">Height:</label>
+			</div>
+			<div class="col-md-10">
+				<input type ="text" maxlength="100" size="60" name="height">
+			</div>
+		</div>
+
+		<div class="row form-element">
+			<div class="col-md-2">
+				<label for="weight">Weight:</label>
+			</div>
+			<div class="col-md-10">
+				<input type ="text" maxlength="100" size="60" name="weight">
+			</div>
+		</div>
+
+		<div class="row form-element">
+			<div class="col-md-2">
+				<label for="picture">Picture:</label>
+			</div>
+			<div class="col-md-10">
+				<input type="file" name="picture" accept="image/*">
+			</div>
+		</div>
+
+		<div class="form-button center">
+			<button type="submit" id="submit" type="submit">Create</button>
+		</div>
+	</form>
+{% endblock %}

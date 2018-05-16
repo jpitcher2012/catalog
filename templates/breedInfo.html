@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+
+	<div>
+		{% if breed.user_id == user_id %}
+			<span class="right">
+				<a href="{{url_for('editBreed', breed_id = breed.id, group_id = group.id)}}">Edit</a> |
+				<a href="{{url_for('deleteBreed', breed_id = breed.id, group_id = group.id)}}">Delete</a>
+			</span>
+		{% endif %}
+		<h2>
+			<a href="{{url_for('showGroups')}}">Home</a> >
+			<a href="{{url_for('showGroupBreeds', group_id=group.id)}}">{{group.name}} Group</a> >
+			{{breed.name}}
+		</h2>
+	</div>
+
+	{% if breed.picture %}
+		<div class="center"><img class="breed-pic" src="{{url_for('static', filename=breed.picture)}}" alt="{{breed.name}}"></div>
+	{% endif %}
+
+	<div>{{breed.description}}</div>
+	<br/>
+	<div><strong>Height:</strong> {{breed.height}}</div>
+	<div><strong>Weight:</strong> {{breed.weight}}</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+
+	<h2>
+		<a href="{{url_for('showGroups')}}">Home</a> >
+		<a href="{{url_for('showGroupBreeds', group_id=group.id)}}">{{group.name}} Group</a> >
+		<a href="{{url_for('showBreedInfo', group_id=group.id, breed_id=breed.id)}}">{{breed.name}}</a> >
+		Delete Breed
+	</h2>
+
+	<div>Are you sure you want to delete the breed {{breed.name}}?</div>
+
+	<form action="#" method = 'post'>
+
+		<div class="form-button center">
+			<button type="submit" id="submit" type="submit">Delete</button>
+			<input type="button" name="cancel" value="Cancel" onClick="window.location.href='{{url_for('showBreedInfo', breed_id = breed.id, group_id = group.id)}}'" />
+		</div>
+
+	</form>
+
+{% endblock %}
