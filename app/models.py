@@ -56,6 +56,6 @@ class Breed(Base):
             'weight':       self.weight,
         }
 
-engine = create_engine('sqlite:///dogbreeds.db')
+engine = create_engine('postgresql://catalog:catalog@localhost/catalog')
 
 Base.metadata.create_all(engine)
