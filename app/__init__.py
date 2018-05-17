@@ -17,7 +17,7 @@ from werkzeug.utils import secure_filename
 
 from models import Base, Breed, Group, User
 
-CLIENT_ID = json.loads(open('client_secrets.json',
+CLIENT_ID = json.loads(open('/var/www/catalog/app/client_secrets.json',
                             'r').read())['web']['client_id']
 
 # Connect to database and create database session
@@ -222,7 +222,7 @@ def login():
 def gconnect(auth_code):
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets('/var/www/catalog/app/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(auth_code)
     except FlowExchangeError:
@@ -286,9 +286,9 @@ def gconnect(auth_code):
 # Log in (Facebook)
 def fbconnect(access_token):
     # Exchange client token for long-lived server-side token
-    app_id = json.loads(open('fb_client_secrets.json',
+    app_id = json.loads(open('/var/www/catalog/app/fb_client_secrets.json',
                              'r').read())['web']['app_id']
-    app_secret = json.loads(open('fb_client_secrets.json',
+    app_secret = json.loads(open('/var/www/catalog/app/fb_client_secrets.json',
                                  'r').read())['web']['app_secret']
     url = ('https://graph.facebook.com/oauth/access_token?'
            'grant_type=fb_exchange_token&client_id=%s&client_secret=%s'
