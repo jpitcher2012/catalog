@@ -27,7 +27,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 app = Flask(__name__)
-app.config['UPLOADS'] = '/static'
+app.config['UPLOADS'] = '/var/www/catalog/app/static'
 
 # Show all groups
 @app.route('/')
